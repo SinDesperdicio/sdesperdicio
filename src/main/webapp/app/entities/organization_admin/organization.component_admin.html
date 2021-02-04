@@ -1,0 +1,139 @@
+<div>
+    <h2 id="page-heading">
+        <span>Organización</span>
+
+        <button *ngIf="filterorg()?.length! === 0"  id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-organization" [routerLink]="['/organization_admin/new']">
+            <fa-icon icon="plus"></fa-icon>
+            <span>
+            Crear Organización
+            </span>
+        </button>
+    </h2>
+    <jhi-alert-error></jhi-alert-error>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="filterorg()?.length! === 0">
+        <span>No se encontro organización.</span>
+    </div>
+    <div class="table-responsive" id="entities" *ngIf="filterorg()?.length! > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+
+                    <th scope="col" ><span>Razon Social</span></th>
+                    <th scope="col" ><span>Tipo</span></th>
+                    <th scope="col" ><span>Description</span></th>
+                    <th scope="col" ><span>Cuit</span></th>
+                    <th scope="col" ><span>Sucursal</span></th>
+                    <th scope="col" ><span>Dirección</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let organization of filterorg() ;trackBy: trackId">
+                    <td>{{ organization.razonSocial }}</td>
+                    <td>{{ organization.tipo }}</td>
+                    <td>{{ organization.description }}</td>
+                    <td>{{ organization.cuit }}</td>
+                    <td>{{ filtersuc()[0].desription! }}</td>
+                    <td>{{ filtersuc()[0].direction! }}</td>
+                    <td class="text-right">
+                        <div class="btn-group">
+                            <button type="submit"
+                                    [routerLink]="['/organization_admin', organization.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">Vista</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/organization_admin', organization.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Editar</span>
+                            </button>
+
+                            <button *ngIf="!filter()[0].branch.organization" type="submit" (click)="delete(organization)"
+                            class="btn btn-danger btn-sm">
+                            <fa-icon icon="times"></fa-icon>
+                            <span class="d-none d-md-inline">Eliminar</span>
+                            </button>
+
+                            <button type="submit"
+                                    [routerLink]="['/branch_admin', organization.id, 'add']"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="plus"></fa-icon>
+                                <span class="d-none d-md-inline">Agregar Sucursal</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <h2 id="page-heading">
+        <span>Sucursal</span>
+    </h2>
+    <div class="alert alert-warning" id="no-result" *ngIf="filtersuc()?.length! === 0">
+        <span>No se encontro Sucursal.</span>
+    </div>
+
+    <div class="table-responsive" id="entities" *ngIf="filtersuc()?.length! > 0">
+        <table class="table table-striped" aria-describedby="page-heading">
+            <thead>
+                <tr>
+                    <th *ngIf="false" scope="col" ><span>ID</span></th>
+                    <th scope="col" ><span>Descripción</span></th>
+                    <th *ngIf="false" scope="col" ><span>Latitud</span></th>
+                    <th *ngIf="false" scope="col" ><span>Longitud</span></th>
+                    <th scope="col" ><span>Dirección</span></th>
+                    <th *ngIf="false" scope="col" ><span>Organization</span></th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let branch of filtersuc() ;trackBy: trackId">
+                    <td *ngIf="false">{{ branch.id }}</td>
+                    <td >{{ branch.desription }}</td>
+                    <td *ngIf="false">{{ branch.latitud }}</td>
+                    <td *ngIf="false">{{ branch.longitud }}</td>
+                    <td>{{ branch.direction }}</td>
+                    <td>
+                        <div *ngIf="false">
+                            <a [routerLink]="['/organization', branch.organization?.id, 'view']" >{{ branch.organization?.id }}</a>
+                        </div>
+                    </td>
+                    <td class="text-right">
+                        <div class="btn-group">
+
+                            <button  *ngIf="filtersuc()[0].desription! === branch?.desription!" type="submit" [disabled]="true"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="plus"></fa-icon>
+                                <span class="d-none d-md-inline">Central</span>
+                            </button>
+
+                            <button  *ngIf="filtersuc()[0].desription! !== branch?.desription!" type="submit"
+                                    [routerLink]="['/branch_admin', branch.id, 'view']"
+                                    class="btn btn-info btn-sm">
+                                <fa-icon icon="eye"></fa-icon>
+                                <span class="d-none d-md-inline">Vista</span>
+                            </button>
+
+                            <button  *ngIf="filtersuc()[0].desription! !== branch?.desription!" type="submit"
+                                    [routerLink]="['/branch_admin', branch.id, 'edit']"
+                                    class="btn btn-primary btn-sm">
+                                <fa-icon icon="pencil-alt"></fa-icon>
+                                <span class="d-none d-md-inline">Editar</span>
+                            </button>
+
+                            <button *ngIf="false" type="submit" (click)="deletebranch(branch)"
+                                    class="btn btn-danger btn-sm">
+                                <fa-icon icon="times"></fa-icon>
+                                <span class="d-none d-md-inline">Eliminar</span>
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
