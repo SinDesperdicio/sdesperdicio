@@ -95,6 +95,9 @@ spring:
     basename: i18n/messages
   main:
     allow-bean-definition-overriding: true
+  mvc:
+    favicon:
+      enabled: false
   task:
     execution:
       thread-name-prefix: sin-desperdicio-task-
@@ -151,7 +154,7 @@ jhipster:
     contact-name:
     contact-url:
     contact-email:
-    license: unlicensed
+    license:
     license-url:
 # ===================================================================
 # Application specific properties
