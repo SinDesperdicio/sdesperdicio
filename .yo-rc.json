@@ -3,7 +3,7 @@
     "promptValues": {
       "packageName": "app.sindesperdicio.net.ar"
     },
-    "jhipsterVersion": "6.8.0",
+    "jhipsterVersion": "6.10.5",
     "applicationType": "monolith",
     "baseName": "SinDesperdicio",
     "packageName": "app.sindesperdicio.net.ar",
@@ -13,8 +13,8 @@
     "cacheProvider": "no",
     "websocket": false,
     "databaseType": "sql",
-    "devDatabaseType": "mysql",
-    "prodDatabaseType": "mysql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
     "searchEngine": false,
     "messageBroker": false,
     "serviceDiscoveryType": false,
