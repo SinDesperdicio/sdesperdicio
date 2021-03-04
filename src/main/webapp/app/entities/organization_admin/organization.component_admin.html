@@ -2,16 +2,17 @@
     <h2 id="page-heading">
         <span>Organización</span>
 
-        <button *ngIf="filterorg()?.length! === 0"  id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-organization" [routerLink]="['/organization_admin/new']">
+        <button *ngIf="filterorg() === undefined"  id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-organization" [routerLink]="['/organization_admin/new']">
             <fa-icon icon="plus"></fa-icon>
             <span>
             Crear Organización
             </span>
         </button>
     </h2>
+    
     <jhi-alert-error></jhi-alert-error>
 
-    <div class="alert alert-warning" id="no-result" *ngIf="filterorg()?.length! === 0">
+    <div class="alert alert-warning" id="no-result" *ngIf="filterorg() === undefined">
         <span>No se encontro organización.</span>
     </div>
     <div class="table-responsive" id="entities" *ngIf="filterorg()?.length! > 0">
@@ -73,7 +74,7 @@
     <h2 id="page-heading">
         <span>Sucursal</span>
     </h2>
-    <div class="alert alert-warning" id="no-result" *ngIf="filtersuc()?.length! === 0">
+    <div class="alert alert-warning" id="no-result" *ngIf="filtersuc()=== undefined ">
         <span>No se encontro Sucursal.</span>
     </div>
 
