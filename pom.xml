@@ -1120,7 +1120,7 @@
                             <changeLogFile>src/main/resources/config/liquibase/master.xml</changeLogFile>
                             <diffChangeLogFile>src/main/resources/config/liquibase/changelog/${maven.build.timestamp}_changelog.xml</diffChangeLogFile>
                             <driver></driver>
-                            <url>mysql://b5d250ca292721:82fcb133@eu-cdbr-west-03.cleardb.net/heroku_b14ea44211dcfe6</url>
+                            <url>mysql://b5d250ca292721:82fcb133@eu-cdbr-west-03.cleardb.net:3306/heroku_b14ea44211dcfe6</url>
                             <defaultSchemaName></defaultSchemaName>
                             <username>b5d250ca292721</username>
                             <password>82fcb133</password>
